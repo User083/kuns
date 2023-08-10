@@ -4,10 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import Loader from "./Loader";
 import { useRouter } from "next/navigation";
-import {
-  amountOptions,
-  resolutionOptions,
-} from "@/app/(dashboard)/(routes)/dashboard/constants";
+import { amountOptions, resolutionOptions } from "@/app/(dashboard)/constants";
 
 interface IProps {
   prompt: string;
@@ -24,16 +21,17 @@ const GenerationForm = () => {
   const [images, setImages] = useState<string[]>([]);
 
   const onSubmit = async (values: IProps) => {
-    try {
-      setImages([]);
-      const response = await axios.post("/api/image", values);
-      const urls = response.data.map((image: { url: string }) => image.url);
-      setImages(urls);
-      form.reset();
-    } catch (error) {
-    } finally {
-      router.refresh();
-    }
+    console.log(values);
+    // try {
+    //   setImages([]);
+    //   const response = await axios.post("/api/image", values);
+    //   const urls = response.data.map((image: { url: string }) => image.url);
+    //   setImages(urls);
+    //   form.reset();
+    // } catch (error) {
+    // } finally {
+    //   router.refresh();
+    // }
   };
 
   return (
@@ -47,8 +45,8 @@ const GenerationForm = () => {
           <select
             aria-label="Amount"
             disabled={isLoading}
-            name="Amount"
             className="bg-black text-white"
+            {...form.register("amount")}
           >
             {amountOptions.map((amount) => (
               <option
@@ -61,8 +59,8 @@ const GenerationForm = () => {
           <select
             aria-label="Resolution"
             disabled={isLoading}
-            name="Resolution"
             className="bg-black text-white"
+            {...form.register("resolution")}
           >
             {resolutionOptions.map((resolution) => (
               <option
@@ -75,15 +73,16 @@ const GenerationForm = () => {
         </section>
         <section className="w-full flex">
           <input
-            name="prompt"
             type="text"
             className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent text-white bg-black w-full"
             aria-label="Prompt input"
             disabled={isLoading}
             placeholder="What does your heart desire?"
+            {...form.register("prompt")}
           />
           <button
             name="Submit"
+            type="submit"
             className="p-2 hover:text-gray-400"
             aria-label="Submit prompt"
             disabled={isLoading}
