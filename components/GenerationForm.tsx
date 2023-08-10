@@ -5,6 +5,7 @@ import { useState } from "react";
 import Loader from "./Loader";
 import { useRouter } from "next/navigation";
 import { amountOptions, resolutionOptions } from "@/app/(dashboard)/constants";
+import Image from "next/image";
 
 interface IProps {
   prompt: string;
@@ -98,6 +99,23 @@ const GenerationForm = () => {
             <p className="text-white">No images generated yet</p>
           </>
         )}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
+          {images.map((source) => (
+            <article className="rounded-lg overflow-hidden" key={source}>
+              <section className="relative aspect-square">
+                <Image fill alt="Image" src={source} />
+              </section>
+              <section>
+                <button
+                  onClick={() => window.open(source)}
+                  className="p-4 bg-black text-white"
+                >
+                  Download
+                </button>
+              </section>
+            </article>
+          ))}
+        </div>
       </section>
     </>
   );
