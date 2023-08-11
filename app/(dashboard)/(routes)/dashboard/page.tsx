@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function DashboardPage() {
   return (
-    <main className="px-24 pb-24 pt-10">
+    <main className="lg:px-24 lg:pb-24 lg:pt-10 p-5">
       <section className="mb-8 space-y-4">
         <div className="flex w-full justify-between items-center">
           <Image

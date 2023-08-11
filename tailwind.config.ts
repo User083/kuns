@@ -14,7 +14,10 @@ const config: Config = {
         tertiary: "#391AA1",
         white: "#FCFCFC",
         black: "#0F0F0F",
-        gray: "#333333",
+        "gray-200": "#e5e7ff",
+        "gray-400": "#9ca3af",
+        "gray-600": "#4b5563",
+        "gray-800": "#1f2937",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

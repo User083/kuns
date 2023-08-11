@@ -11,6 +11,10 @@ export const amountOptions = [
     value: "3",
     label: "3 Images",
   },
+  {
+    value: "4",
+    label: "4 Images",
+  },
 ];
 
 export const resolutionOptions = [
