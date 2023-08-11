@@ -20,11 +20,12 @@ export default function DashboardPage() {
             <UserButton afterSignOutUrl="/" />
           </div>
         </div>
-        <h2 className="text-2xl md:text-4xl font-bold text-center">
-          Set your imagination free
+        <h2 className="text-4xl md:text-5xl font-bold text-center">
+          Generate Images
         </h2>
-        <p className="text-muted-foreground font-light text-sm md:text-lg text-center">
-          Generate some images
+        <p className="text-muted-foreground font-light text-sm text-center">
+          Customise size and number of images, fill in a prompt and watch the
+          magic happen!
         </p>
       </section>
       <section>

@@ -40,12 +40,12 @@ const GenerationForm = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="rounded-lg border w-full p-4 px-3 md:px-6 flex flex-col gap-3 items-center bg-black"
       >
-        <section className="flex flex-col gap-5 md:flex-row items-center justify-center ">
+        <section className="flex flex-col gap-5 sm:flex-row items-center justify-center w-full">
           <h3 className="font-semibold text-white">Options</h3>
           <select
             aria-label="Amount"
             disabled={isLoading}
-            className="bg-[#000000] text-white text-sm rounded-xl p-3"
+            className="bg-[#000000] text-white text-sm rounded-xl p-3 w-full sm:w-[150px]"
             {...form.register("amount")}
           >
             {amountOptions.map((amount) => (
@@ -59,7 +59,7 @@ const GenerationForm = () => {
           <select
             aria-label="Resolution"
             disabled={isLoading}
-            className="bg-[#000000] text-sm text-white rounded-xl p-3"
+            className="bg-[#000000] text-sm text-white rounded-xl p-3 w-full sm:w-[150px]"
             {...form.register("resolution")}
           >
             {resolutionOptions.map((resolution) => (
@@ -75,7 +75,7 @@ const GenerationForm = () => {
         <section className="w-full flex flex-col gap-3 items-center justify-center md:flex-row">
           <input
             type="text"
-            className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent text-white bg-transparent w-full p-3"
+            className="md:border-0 md:outline-none m:focus-visible:ring-0 md:focus-visible:ring-transparent text-white md:bg-transparent w-full p-3 my-2 rounded border bg-[#000000] text-sm"
             aria-label="Prompt input"
             disabled={isLoading}
             placeholder="What does your heart desire?"
@@ -84,7 +84,7 @@ const GenerationForm = () => {
           <button
             name="Submit"
             type="submit"
-            className="p-3 hover:bg-white hover:text-black bg-[#000000] rounded-xl font-semibold text-sm"
+            className="p-3 hover:bg-white hover:text-black bg-[#000000] rounded-xl font-semibold text-sm w-full md:w-auto"
             aria-label="Submit prompt"
             disabled={isLoading}
           >
