@@ -1,6 +1,5 @@
 "use client";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { useState } from "react";
 import Loader from "./Loader";
 import { useRouter } from "next/navigation";
@@ -24,8 +23,14 @@ const GenerationForm = () => {
   const onSubmit = async (values: IProps) => {
     try {
       setImages([]);
-      const response = await axios.post("./api/image", values);
-      const urls = response.data.map((image: { url: string }) => image.url);
+      const post = await fetch("/api/image", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      const response = await post.json();
+
+      const urls = response.map((image: { url: string }) => image.url);
       setImages(urls);
       form.reset();
     } catch (error) {
@@ -106,7 +111,12 @@ const GenerationForm = () => {
               key={source}
             >
               <section className="relative aspect-square ">
-                <Image fill alt="Image" src={source} />
+                <Image
+                  fill
+                  alt="Image"
+                  src={source}
+                  sizes="(max-width: 768px) 100vw"
+                />
               </section>
               <section>
                 <button
